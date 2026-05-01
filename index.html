@@ -11,7 +11,6 @@
 :root {
   --primary:#0284c7;
   --secondary:#06b6d4;
-  --dark:#0f172a;
   --bg:#f8fafc;
 }
 
@@ -27,7 +26,7 @@ body {
   color:#0f172a;
 }
 
-/* NAVBAR */
+/* NAV */
 header {
   background:white;
   border-bottom:1px solid #eee;
@@ -45,10 +44,6 @@ header {
   align-items:center;
 }
 
-.logo {
-  font-weight:700;
-}
-
 nav {
   display:flex;
   gap:25px;
@@ -58,17 +53,16 @@ nav a {
   text-decoration:none;
   color:#334155;
   font-weight:500;
-  transition:0.2s;
 }
 
 nav a:hover {
   color:var(--primary);
 }
 
-/* MOBILE */
 .menu-btn {
   display:none;
   font-size:24px;
+  cursor:pointer;
 }
 
 @media(max-width:768px){
@@ -84,15 +78,18 @@ nav a:hover {
 
   nav.active { display:flex; }
 
-  .menu-btn { display:block; cursor:pointer; }
+  nav a {
+    padding:15px;
+    border-top:1px solid #eee;
+  }
 
-  nav a { padding:15px; border-top:1px solid #eee; }
+  .menu-btn { display:block; }
 }
 
 /* HERO */
 .hero {
-  padding:100px 20px;
   text-align:center;
+  padding:90px 20px;
   color:white;
   background:
     linear-gradient(rgba(2,132,199,0.85), rgba(6,182,212,0.85)),
@@ -102,13 +99,12 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size:34px;
-  max-width:700px;
-  margin:auto;
+  font-size:32px;
+  font-weight:700;
 }
 
 .hero p {
-  margin:20px 0;
+  margin:15px 0;
   color:#e0f2fe;
 }
 
@@ -117,10 +113,12 @@ nav a:hover {
 }
 
 .btn {
+  display:inline-block;
   padding:14px 22px;
   border-radius:8px;
   text-decoration:none;
   font-weight:600;
+  margin:5px;
 }
 
 .primary {
@@ -131,10 +129,9 @@ nav a:hover {
 .outline {
   border:2px solid white;
   color:white;
-  margin-left:10px;
 }
 
-/* SECTION */
+/* SECTIONS */
 .container {
   max-width:1100px;
   margin:auto;
@@ -146,41 +143,62 @@ nav a:hover {
   margin-bottom:30px;
 }
 
-/* CARD */
-.card {
-  background:white;
-  border-radius:12px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+h2 {
+  font-size:28px;
+  margin-bottom:5px;
 }
 
+/* GRID */
 .grid {
   display:grid;
   gap:20px;
+  grid-template-columns:1fr;
 }
 
 @media(min-width:768px){
-  .grid { grid-template-columns:1fr 1fr; }
+  .grid {
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 
-/* IMAGE */
+/* FEATURE CARDS */
+.feature-card {
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  border:1px solid #eee;
+  transition:0.3s;
+}
+
+.feature-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.icon {
+  width:50px;
+  height:50px;
+  background:rgba(2,132,199,0.1);
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  margin-bottom:15px;
+  font-size:20px;
+}
+
+/* CARD */
+.card {
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
 img {
   width:100%;
   border-radius:10px;
-}
-
-/* SPEC TABLE */
-.specs {
-  margin-top:20px;
-  border-top:1px solid #eee;
-}
-
-.spec-row {
-  display:flex;
-  justify-content:space-between;
-  padding:10px 0;
-  border-bottom:1px solid #eee;
-  font-size:14px;
 }
 
 /* CTA */
@@ -190,15 +208,19 @@ img {
   background:linear-gradient(to right,var(--primary),var(--secondary));
   color:white;
   border-radius:12px;
+  margin-top:40px;
 }
 
 /* FORM */
-form input, form textarea, form select {
+form input,
+form textarea,
+form select {
   width:100%;
   padding:14px;
   margin-top:10px;
   border-radius:8px;
   border:1px solid #ccc;
+  font-size:16px;
 }
 
 form button {
@@ -217,11 +239,11 @@ form button {
 
 <header>
   <div class="nav">
-    <div class="logo">NOLAD BUSINESS PLC</div>
+    <strong>NOLAD BUSINESS PLC</strong>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
     <nav id="menu">
       <a href="#equipment">Equipment</a>
-      <a href="#about">About</a>
+      <a href="#why">Why Us</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -229,10 +251,38 @@ form button {
 
 <!-- HERO -->
 <section class="hero">
-  <h1>High-Performance Heavy Equipment for Demanding Projects</h1>
-  <p>Reliable excavators built for mining, construction, and industrial operations</p>
+  <h1>Heavy Equipment Built for Performance</h1>
+  <p>Reliable machinery for mining, construction & industrial work</p>
   <a href="#equipment" class="btn primary">View Equipment</a>
   <a href="#contact" class="btn outline">Request Quote</a>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why" class="container">
+  <div class="section-header">
+    <h2>Why Choose Us</h2>
+    <p>Industry-leading equipment and service</p>
+  </div>
+
+  <div class="grid">
+    <div class="feature-card">
+      <div class="icon">⚙️</div>
+      <h3>Quality Equipment</h3>
+      <p>Brand new machines from trusted manufacturers</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🛡️</div>
+      <h3>Reliable Service</h3>
+      <p>Full maintenance and technical support</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🏆</div>
+      <h3>Expert Team</h3>
+      <p>Professional guidance for every project</p>
+    </div>
+  </div>
 </section>
 
 <!-- EQUIPMENT -->
@@ -242,43 +292,14 @@ form button {
   </div>
 
   <div class="card">
-    <div class="grid">
-      <img src="https://via.placeholder.com/600x400">
+    <img src="https://via.placeholder.com/600x400">
 
-      <div>
-        <h3>KOBELCO SK380XDLC-10</h3>
-        <p><strong>Category:</strong> Excavator</p>
-        <p><strong>Units:</strong> 6</p>
-        <p><strong>Year:</strong> 2026</p>
+    <h3>KOBELCO SK380XDLC-10</h3>
+    <p><strong>Category:</strong> Excavator</p>
+    <p><strong>Units:</strong> 6</p>
+    <p><strong>Year:</strong> 2026</p>
 
-        <div class="specs">
-          <div class="spec-row"><span>Operating Weight</span><span>38–39 Tons</span></div>
-          <div class="spec-row"><span>Engine</span><span>HINO J08E (188 kW / ~252 HP)</span></div>
-          <div class="spec-row"><span>Bucket Capacity</span><span>1.6 – 1.9 m³</span></div>
-          <div class="spec-row"><span>Max Digging Depth</span><span>~6.8 m</span></div>
-          <div class="spec-row"><span>Max Reach</span><span>~10.6 m</span></div>
-          <div class="spec-row"><span>Bucket Force</span><span>up to 252 kN</span></div>
-          <div class="spec-row"><span>Drawbar Pull</span><span>331 kN</span></div>
-        </div>
-
-        <a href="#contact" class="btn primary">Request Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="container">
-  <div class="section-header">
-    <h2>About Us</h2>
-  </div>
-
-  <div class="card">
-    <p>
-      Nolad Business PLC delivers high-performance heavy equipment solutions
-      tailored for construction, mining, and industrial projects. We focus on
-      reliability, efficiency, and long-term partnerships.
-    </p>
+    <a href="#contact" class="btn primary">Request Quote</a>
   </div>
 </section>
 
@@ -288,12 +309,18 @@ form button {
     <h2>Contact Us</h2>
   </div>
 
+  <div class="grid">
+    <div class="card">📞 Phone: +1 (555) 123-4567</div>
+    <div class="card">📧 Email: info@noladbusiness.com</div>
+    <div class="card">📍 Location: Your City, Country</div>
+  </div>
+
   <form class="card">
     <input placeholder="Name">
     <input placeholder="Email">
     <input placeholder="Phone">
-    <textarea placeholder="Project details"></textarea>
-    <button>Send Message</button>
+    <textarea placeholder="Message"></textarea>
+    <button type="submit">Send Message</button>
   </form>
 </section>
 
