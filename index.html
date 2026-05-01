@@ -325,7 +325,6 @@ form button {
 </section>
 
 <!-- EQUIPMENT -->
-<!-- ================= EQUIPMENT ================= -->
 <section id="equipment" class="container">
 
   <div class="section-header">
@@ -335,27 +334,36 @@ form button {
 
   <div class="card">
 
-    <!-- IMAGE -->
     <img src="https://via.placeholder.com/800x450" style="border-radius:12px; margin-bottom:20px;">
 
-    <!-- TITLE -->
-    <h3 style="font-size:22px; font-weight:700; margin-bottom:6px;">
-      KOBELCO SK380XDLC-10
-    </h3>
+    <h3 style="font-size:22px; font-weight:700;">KOBELCO SK380XDLC-10</h3>
 
-    <!-- META LINE -->
-    <p style="color:#666; margin-bottom:16px;">
+    <p style="color:#666; margin-bottom:10px;">
       Excavator • 6 Units • 2026 Model • Japan Origin
     </p>
 
-    <!-- SHORT DESCRIPTION -->
-    <p style="margin-bottom:20px; line-height:1.6;">
-      Excavator Rental Offer for mining, quarry, and heavy construction operations.
-      Built for durability, efficiency, and high production performance.
+    <p style="margin-bottom:18px;">
+      Heavy-duty mining and construction excavator built for maximum productivity and durability.
     </p>
 
-    <!-- SPEC LIST (CLEAN LIST STYLE - NOT BOXES) -->
-    <div style="margin-bottom:20px;">
+    <!-- 🔥 NEW: UNIT SELECT -->
+    <label style="font-weight:600;">Select Unit</label>
+
+    <select id="machineSelect"
+      style="width:100%; padding:12px; margin-top:8px; border-radius:8px; border:1px solid #ccc;">
+
+      <option value="Unit 1 - SK380XDLC-10">Unit 1</option>
+      <option value="Unit 2 - SK380XDLC-10">Unit 2</option>
+      <option value="Unit 3 - SK380XDLC-10">Unit 3</option>
+      <option value="Unit 4 - SK380XDLC-10">Unit 4</option>
+      <option value="Unit 5 - SK380XDLC-10">Unit 5</option>
+      <option value="Unit 6 - SK380XDLC-10">Unit 6</option>
+
+    </select>
+
+    <!-- SPEC GRID (clean upgrade) -->
+    <div style="margin-top:20px; line-height:1.8;">
+
       <p><strong>Operating Weight:</strong> ~38–39 Tons</p>
       <p><strong>Engine:</strong> HINO J08E (188 kW / ~252 HP)</p>
       <p><strong>Bucket Capacity:</strong> 1.6 – 1.9 m³</p>
@@ -363,36 +371,32 @@ form button {
       <p><strong>Max Reach:</strong> ~10.6 m</p>
       <p><strong>Bucket Force:</strong> up to 252 kN</p>
       <p><strong>Drawbar Pull:</strong> 331 kN</p>
+
     </div>
 
-    <!-- FEATURES -->
-    <div style="margin-bottom:20px;">
+    <!-- FEATURES (clean + modern feel) -->
+    <div style="margin-top:20px;">
       <p><strong>Key Features:</strong></p>
-      <ul style="margin-left:18px; color:#444; line-height:1.6;">
-        <li>Reinforced XD boom for heavy-duty operations</li>
-        <li>Mining-grade durability design</li>
-        <li>Fuel-efficient hydraulic system</li>
+      <ul style="margin-left:18px; color:#444;">
+        <li>Reinforced XD boom for mining operations</li>
+        <li>High fuel efficiency hydraulic system</li>
+        <li>Extreme durability for harsh environments</li>
       </ul>
     </div>
 
-    <!-- CTA -->
-    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <a href="contact.html"
-         style="background:#111; color:white; padding:12px 18px; border-radius:8px; text-decoration:none;">
-        Request Quote
-      </a>
+    <!-- 🔥 NEW: SMART BUTTON -->
+    <button onclick="requestQuote()"
+      style="margin-top:20px; width:100%; background:#0284c7; color:white; padding:14px; border:none; border-radius:8px; font-weight:600; cursor:pointer;">
 
-      <a href="contact.html"
-         style="border:1px solid #ddd; padding:12px 18px; border-radius:8px; text-decoration:none;">
-        Check Availability
-      </a>
-    </div>
+      Get Quote
+
+    </button>
 
   </div>
 
 </section>
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="container">
   <div class="section-header">
     <h2>Contact Us</h2>
@@ -408,12 +412,13 @@ form button {
     <input placeholder="Name">
     <input placeholder="Email">
     <input placeholder="Phone">
-    <textarea placeholder="Message"></textarea>
+    <textarea id="message" placeholder="Message"></textarea>
+
     <button type="submit">Send Message</button>
   </form>
 </section>
 
-<!-- CTA -->
+<!-- ================= CTA ================= -->
 <section class="container">
   <div class="cta">
     <h2>Ready to Start Your Project?</h2>
@@ -421,9 +426,42 @@ form button {
   </div>
 </section>
 
+<!-- ================= SCRIPTS ================= -->
 <script>
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
+}
+
+function requestQuote() {
+
+  const select = document.getElementById("machineSelect");
+
+  if (!select) return;
+
+  const selected = select.value;
+
+  const message =
+`NOLAD BUSINESS PLC - EQUIPMENT REQUEST
+
+Machine Selected:
+${selected}
+
+Request:
+- Availability
+- Pricing
+- Rental terms
+
+Please contact me with details.`;
+
+  const textarea = document.getElementById("message");
+
+  if (textarea) {
+    textarea.value = message;
+  }
+
+  document.getElementById("contact").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 </script>
 
