@@ -53,7 +53,7 @@ header {
 }
 
 .logo img {
-  height:55px; /* 🔥 bigger logo (standard website size) */
+  height:70px; /* 🔥 bigger logo (standard website size) */
 }
 
 nav {
@@ -332,6 +332,7 @@ form button {
 </section>
 
 <!-- EQUIPMENT -->
+<!-- ================= EQUIPMENT ================= -->
 <section id="equipment" class="container">
 
   <div class="section-header">
@@ -341,38 +342,69 @@ form button {
 
   <div class="card">
 
-    <img src="image1.JPG" alt="Equipment Image">
+    <img src="https://via.placeholder.com/800x450" style="border-radius:12px; margin-bottom:20px;">
 
-    <h3 style="font-size:22px; font-weight:700; margin-top:15px;">
-      KOBELCO SK380XDLC-10
-    </h3>
+    <h3 style="font-size:22px; font-weight:700;">KOBELCO SK380XDLC-10</h3>
 
-    <p style="color:#666;">Excavator • 6 Units • 2026 Model • Japan Origin</p>
+    <p style="color:#666; margin-bottom:10px;">
+      Excavator • 6 Units • 2026 Model • Japan Origin
+    </p>
 
-    <p style="margin:10px 0 15px;">
+    <p style="margin-bottom:18px;">
       Heavy-duty mining and construction excavator built for maximum productivity and durability.
     </p>
 
-    <select style="width:100%; padding:12px; border-radius:8px;">
-      <option>Unit 1</option>
-      <option>Unit 2</option>
-      <option>Unit 3</option>
-      <option>Unit 4</option>
-      <option>Unit 5</option>
-      <option>Unit 6</option>
+    <!-- 🔥 NEW: UNIT SELECT -->
+    <label style="font-weight:600;">Select Unit</label>
+
+    <select id="machineSelect"
+      style="width:100%; padding:12px; margin-top:8px; border-radius:8px; border:1px solid #ccc;">
+
+      <option value="Unit 1 - SK380XDLC-10">Unit 1</option>
+      <option value="Unit 2 - SK380XDLC-10">Unit 2</option>
+      <option value="Unit 3 - SK380XDLC-10">Unit 3</option>
+      <option value="Unit 4 - SK380XDLC-10">Unit 4</option>
+      <option value="Unit 5 - SK380XDLC-10">Unit 5</option>
+      <option value="Unit 6 - SK380XDLC-10">Unit 6</option>
+
     </select>
 
+    <!-- SPEC GRID (clean upgrade) -->
+    <div style="margin-top:20px; line-height:1.8;">
+
+      <p><strong>Operating Weight:</strong> ~38–39 Tons</p>
+      <p><strong>Engine:</strong> HINO J08E (188 kW / ~252 HP)</p>
+      <p><strong>Bucket Capacity:</strong> 1.6 – 1.9 m³</p>
+      <p><strong>Max Digging Depth:</strong> ~6.8 m</p>
+      <p><strong>Max Reach:</strong> ~10.6 m</p>
+      <p><strong>Bucket Force:</strong> up to 252 kN</p>
+      <p><strong>Drawbar Pull:</strong> 331 kN</p>
+
+    </div>
+
+    <!-- FEATURES (clean + modern feel) -->
+    <div style="margin-top:20px;">
+      <p><strong>Key Features:</strong></p>
+      <ul style="margin-left:18px; color:#444;">
+        <li>Reinforced XD boom for mining operations</li>
+        <li>High fuel efficiency hydraulic system</li>
+        <li>Extreme durability for harsh environments</li>
+      </ul>
+    </div>
+
+    <!-- 🔥 NEW: SMART BUTTON -->
     <button onclick="requestQuote()"
       style="margin-top:20px; width:100%; background:#0284c7; color:white; padding:14px; border:none; border-radius:8px; font-weight:600; cursor:pointer;">
+
       Get Quote
+
     </button>
 
   </div>
+
 </section>
-
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="container">
-
   <div class="section-header">
     <h2>Contact Us</h2>
   </div>
@@ -388,29 +420,55 @@ form button {
     <input placeholder="Email">
     <input placeholder="Phone">
     <textarea id="message" placeholder="Message"></textarea>
+
     <button type="submit">Send Message</button>
   </form>
-
 </section>
 
-<!-- CTA -->
+<!-- ================= CTA ================= -->
 <section class="container">
   <div class="cta">
     <h2>Ready to Start Your Project?</h2>
+    <p>Get in touch today for equipment rental</p>
   </div>
 </section>
 
+<!-- ================= SCRIPTS ================= -->
 <script>
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
-function requestQuote(){
-  const msg = document.getElementById("message");
-  if(msg){
-    msg.value = "Requesting quote for selected equipment...";
+function requestQuote() {
+
+  const select = document.getElementById("machineSelect");
+
+  if (!select) return;
+
+  const selected = select.value;
+
+  const message =
+`NOLAD BUSINESS PLC - EQUIPMENT REQUEST
+
+Machine Selected:
+${selected}
+
+Request:
+- Availability
+- Pricing
+- Rental terms
+
+Please contact me with details.`;
+
+  const textarea = document.getElementById("message");
+
+  if (textarea) {
+    textarea.value = message;
   }
-  document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+
+  document.getElementById("contact").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 </script>
 
