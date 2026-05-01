@@ -46,8 +46,14 @@ header {
 }
 
 .logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
   font-weight:800;
-  letter-spacing:-0.5px;
+}
+
+.logo img {
+  height:40px;
 }
 
 nav {
@@ -111,34 +117,13 @@ nav a:hover {
   padding:40px 20px;
 }
 
-.hero::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at center, rgba(6,182,212,0.25), transparent 60%);
-}
-
 .hero-content {
   position:relative;
   max-width:800px;
-  z-index:2;
 }
 
-.hero h1 {
-  font-size:34px;
-  font-weight:800;
-  letter-spacing:-0.5px;
-}
-
-.hero p {
-  margin:15px 0 25px;
-  color:#cbd5e1;
-}
-
-@media(min-width:768px){
-  .hero h1 { font-size:56px; }
-  .hero p { font-size:18px; }
-}
+.hero h1 { font-size:40px; font-weight:800; }
+.hero p { margin:15px 0 25px; color:#cbd5e1; }
 
 .hero-buttons {
   display:flex;
@@ -148,22 +133,14 @@ nav a:hover {
 }
 
 .btn {
-  display:inline-block;
   padding:14px 22px;
   border-radius:8px;
   text-decoration:none;
   font-weight:600;
 }
 
-.primary {
-  background:white;
-  color:var(--primary);
-}
-
-.outline {
-  border:2px solid white;
-  color:white;
-}
+.primary { background:white; color:var(--primary); }
+.outline { border:2px solid white; color:white; }
 
 /* SECTIONS */
 .container {
@@ -177,83 +154,55 @@ nav a:hover {
   margin-bottom:30px;
 }
 
-h2 {
-  font-size:30px;
-  font-weight:800;
-}
-
-/* GRID */
-.grid {
-  display:grid;
-  gap:20px;
-  grid-template-columns:1fr;
-}
-
-@media(min-width:768px){
-  .grid {
-    grid-template-columns:repeat(3,1fr);
-  }
-}
-
-/* FEATURE CARDS */
-.feature-card {
-  background:white;
-  padding:25px;
-  border-radius:12px;
-  border:1px solid #eee;
-  transition:0.3s;
-}
-
-.feature-card:hover {
-  transform:translateY(-5px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-.icon {
-  width:50px;
-  height:50px;
-  background:rgba(2,132,199,0.1);
-  color:var(--primary);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:12px;
-  margin-bottom:15px;
-  font-size:20px;
-}
+h2 { font-size:30px; font-weight:800; }
 
 /* CARD */
 .card {
   background:white;
-  padding:20px;
+  padding:25px;
   border-radius:12px;
+  border:1px solid #eee;
   box-shadow:0 5px 20px rgba(0,0,0,0.05);
 }
 
-img {
-  width:100%;
-  border-radius:10px;
+/* CAROUSEL */
+.carousel {
+  position:relative;
+  text-align:center;
 }
 
-/* CTA */
-.cta {
-  text-align:center;
-  padding:50px 20px;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  color:white;
+.carousel img {
+  width:80%;
+  max-width:500px;
+  height:280px;
+  object-fit:cover;
   border-radius:12px;
-  margin-top:40px;
+  transition:0.3s;
 }
+
+/* buttons */
+.arrow {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#0284c7;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  cursor:pointer;
+  border-radius:8px;
+}
+
+.left { left:10px; }
+.right { right:10px; }
 
 /* FORM */
-form input,
-form textarea {
+form input, form textarea {
   width:100%;
   padding:14px;
   margin-top:10px;
   border-radius:8px;
   border:1px solid #ccc;
-  font-size:16px;
 }
 
 form button {
@@ -273,13 +222,21 @@ form button {
 
 <header>
   <div class="nav">
-    <div class="logo">NOLAD BUSINESS PLC</div>
+
+    <!-- 🔥 LOGO (kept) -->
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <span>NOLAD BUSINESS PLC</span>
+    </div>
+
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
     <nav id="menu">
       <a href="#why">Why Us</a>
       <a href="#equipment">Equipment</a>
       <a href="#contact">Contact</a>
     </nav>
+
   </div>
 </header>
 
@@ -296,31 +253,16 @@ form button {
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
+<!-- WHY -->
 <section id="why" class="container">
   <div class="section-header">
     <h2>Why Choose Us</h2>
-    <p>Industry-leading equipment and service</p>
   </div>
 
-  <div class="grid">
-    <div class="feature-card">
-      <div class="icon">⚙️</div>
-      <h3>Quality Equipment</h3>
-      <p>Brand new machines from trusted manufacturers</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">🛡️</div>
-      <h3>Reliable Service</h3>
-      <p>Full maintenance and technical support</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">🏆</div>
-      <h3>Expert Team</h3>
-      <p>Professional guidance for every project</p>
-    </div>
+  <div class="card">
+    <p>✔ Quality Equipment</p>
+    <p>✔ Reliable Service</p>
+    <p>✔ Expert Support Team</p>
   </div>
 </section>
 
@@ -329,139 +271,83 @@ form button {
 
   <div class="section-header">
     <h2>Our Equipment</h2>
-    <p>KOBELCO SK380XDLC-10 – Heavy Duty Excavator Fleet</p>
+    <p>KOBELCO SK380XDLC-10 Fleet</p>
   </div>
 
   <div class="card">
 
-    <img src="image1.JPG" style="border-radius:12px; margin-bottom:20px;">
+    <!-- 🔥 SMALL PROFESSIONAL CAROUSEL -->
+    <div class="carousel">
 
-    <h3 style="font-size:22px; font-weight:700;">KOBELCO SK380XDLC-10</h3>
+      <button class="arrow left" onclick="prevImg()">‹</button>
 
-    <p style="color:#666; margin-bottom:10px;">
-      Excavator • 6 Units • 2026 Model • Japan Origin
-    </p>
+      <img id="equipImg" src="image1.JPG" alt="Equipment">
 
-    <p style="margin-bottom:18px;">
-      Heavy-duty mining and construction excavator built for maximum productivity and durability.
-    </p>
+      <button class="arrow right" onclick="nextImg()">›</button>
 
-    <!-- 🔥 NEW: UNIT SELECT -->
-    <label style="font-weight:600;">Select Unit</label>
+    </div>
 
-    <select id="machineSelect"
-      style="width:100%; padding:12px; margin-top:8px; border-radius:8px; border:1px solid #ccc;">
+    <h3 style="margin-top:20px;">KOBELCO SK380XDLC-10</h3>
+    <p style="color:#666;">6 Units • Mining & Construction Excavator</p>
 
-      <option value="Unit 1 - SK380XDLC-10">Unit 1</option>
-      <option value="Unit 2 - SK380XDLC-10">Unit 2</option>
-      <option value="Unit 3 - SK380XDLC-10">Unit 3</option>
-      <option value="Unit 4 - SK380XDLC-10">Unit 4</option>
-      <option value="Unit 5 - SK380XDLC-10">Unit 5</option>
-      <option value="Unit 6 - SK380XDLC-10">Unit 6</option>
-
+    <select style="width:100%; padding:12px; margin-top:10px; border-radius:8px;">
+      <option>Unit 1</option>
+      <option>Unit 2</option>
+      <option>Unit 3</option>
+      <option>Unit 4</option>
+      <option>Unit 5</option>
+      <option>Unit 6</option>
     </select>
 
-    <!-- SPEC GRID (clean upgrade) -->
-    <div style="margin-top:20px; line-height:1.8;">
-
-      <p><strong>Operating Weight:</strong> ~38–39 Tons</p>
-      <p><strong>Engine:</strong> HINO J08E (188 kW / ~252 HP)</p>
-      <p><strong>Bucket Capacity:</strong> 1.6 – 1.9 m³</p>
-      <p><strong>Max Digging Depth:</strong> ~6.8 m</p>
-      <p><strong>Max Reach:</strong> ~10.6 m</p>
-      <p><strong>Bucket Force:</strong> up to 252 kN</p>
-      <p><strong>Drawbar Pull:</strong> 331 kN</p>
-
-    </div>
-
-    <!-- FEATURES (clean + modern feel) -->
-    <div style="margin-top:20px;">
-      <p><strong>Key Features:</strong></p>
-      <ul style="margin-left:18px; color:#444;">
-        <li>Reinforced XD boom for mining operations</li>
-        <li>High fuel efficiency hydraulic system</li>
-        <li>Extreme durability for harsh environments</li>
-      </ul>
-    </div>
-
-    <!-- 🔥 NEW: SMART BUTTON -->
-    <button onclick="requestQuote()"
-      style="margin-top:20px; width:100%; background:#0284c7; color:white; padding:14px; border:none; border-radius:8px; font-weight:600; cursor:pointer;">
-
-      Get Quote
-
-    </button>
-
   </div>
-
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 <section id="contact" class="container">
+
   <div class="section-header">
     <h2>Contact Us</h2>
-  </div>
-
-  <div class="grid">
-    <div class="card">📞 +1 (555) 123-4567</div>
-    <div class="card">📧 info@noladbusiness.com</div>
-    <div class="card">📍 Virginia, USA</div>
   </div>
 
   <form class="card">
     <input placeholder="Name">
     <input placeholder="Email">
-    <input placeholder="Phone">
-    <textarea id="message" placeholder="Message"></textarea>
-
-    <button type="submit">Send Message</button>
+    <textarea placeholder="Message"></textarea>
+    <button>Send Message</button>
   </form>
+
 </section>
 
-<!-- ================= CTA ================= -->
-<section class="container">
-  <div class="cta">
-    <h2>Ready to Start Your Project?</h2>
-    <p>Get in touch today for equipment rental</p>
-  </div>
-</section>
-
-<!-- ================= SCRIPTS ================= -->
 <script>
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
-function requestQuote() {
+/* 🔥 SIMPLE IMAGE CAROUSEL */
+const images = [
+  "image1.JPG",
+  "image1.JPG",
+  "image1.JPG",
+  "image1.JPG",
+  "image1.JPG",
+  "image1.JPG"
+];
 
-  const select = document.getElementById("machineSelect");
+let index = 0;
+const img = document.getElementById("equipImg");
 
-  if (!select) return;
+function showImg(){
+  img.src = images[index];
+}
 
-  const selected = select.value;
+function nextImg(){
+  index = (index + 1) % images.length;
+  showImg();
+}
 
-  const message =
-`NOLAD BUSINESS PLC - EQUIPMENT REQUEST
-
-Machine Selected:
-${selected}
-
-Request:
-- Availability
-- Pricing
-- Rental terms
-
-Please contact me with details.`;
-
-  const textarea = document.getElementById("message");
-
-  if (textarea) {
-    textarea.value = message;
-  }
-
-  document.getElementById("contact").scrollIntoView({
-    behavior: "smooth"
-  });
+function prevImg(){
+  index = (index - 1 + images.length) % images.length;
+  showImg();
 }
 </script>
 
