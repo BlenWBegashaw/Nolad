@@ -1,267 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nolad Business PLC</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nolad Business PLC</title>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #0284c7;
-      --secondary: #06b6d4;
-      --dark: #0f172a;
-      --bg: #f8fafc;
-    }
+<style>
+:root {
+  --primary:#0284c7;
+  --secondary:#06b6d4;
+  --dark:#0f172a;
+  --bg:#f8fafc;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
 
-    body {
-      background: var(--bg);
-      color: #0f172a;
-      line-height: 1.6;
-    }
+body {
+  background:var(--bg);
+  color:#0f172a;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
+/* NAVBAR */
+header {
+  background:white;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
 
-    /* HEADER */
-    header {
-      background: white;
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+.nav {
+  max-width:1100px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.logo {
+  font-weight:700;
+}
 
-    nav {
-      display: none;
-      flex-direction: column;
-      background: white;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-    }
+nav {
+  display:flex;
+  gap:25px;
+}
 
-    nav a {
-      padding: 12px;
-      text-decoration: none;
-      color: #333;
-      border-bottom: 1px solid #eee;
-    }
+nav a {
+  text-decoration:none;
+  color:#334155;
+  font-weight:500;
+  transition:0.2s;
+}
 
-    nav.active {
-      display: flex;
-    }
+nav a:hover {
+  color:var(--primary);
+}
 
-    .menu-btn {
-      font-size: 24px;
-      cursor: pointer;
-    }
+/* MOBILE */
+.menu-btn {
+  display:none;
+  font-size:24px;
+}
 
-    @media (min-width: 768px) {
-      nav {
-        display: flex !important;
-        position: static;
-        flex-direction: row;
-      }
+@media(max-width:768px){
+  nav {
+    display:none;
+    position:absolute;
+    top:60px;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    background:white;
+  }
 
-      nav a {
-        border: none;
-        margin-left: 20px;
-      }
+  nav.active { display:flex; }
 
-      .menu-btn {
-        display: none;
-      }
-    }
+  .menu-btn { display:block; cursor:pointer; }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
-    }
+  nav a { padding:15px; border-top:1px solid #eee; }
+}
 
-    .hero h1 {
-      font-size: 32px;
-      font-weight: 700;
-    }
+/* HERO */
+.hero {
+  padding:100px 20px;
+  text-align:center;
+  color:white;
+  background:
+    linear-gradient(rgba(2,132,199,0.85), rgba(6,182,212,0.85)),
+    url('https://images.unsplash.com/photo-1581091215367-59ab6b60b0f5?q=80&w=1400');
+  background-size:cover;
+  background-position:center;
+}
 
-    .hero p {
-      margin: 15px 0;
-      color: #e0f2fe;
-    }
+.hero h1 {
+  font-size:34px;
+  max-width:700px;
+  margin:auto;
+}
 
-    @media (min-width: 768px) {
-      .hero h1 {
-        font-size: 52px;
-      }
-    }
+.hero p {
+  margin:20px 0;
+  color:#e0f2fe;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin: 5px;
-      font-weight: 600;
-    }
+@media(min-width:768px){
+  .hero h1 { font-size:52px; }
+}
 
-    .primary {
-      background: white;
-      color: var(--primary);
-    }
+.btn {
+  padding:14px 22px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+}
 
-    .outline {
-      border: 2px solid white;
-      color: white;
-    }
+.primary {
+  background:white;
+  color:var(--primary);
+}
 
-    /* SECTION HEADER */
-    .section-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.outline {
+  border:2px solid white;
+  color:white;
+  margin-left:10px;
+}
 
-    h1, h2, h3 {
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
+/* SECTION */
+.container {
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
 
-    h2 {
-      font-size: 28px;
-    }
+.section-header {
+  text-align:center;
+  margin-bottom:30px;
+}
 
-    p {
-      color: #475569;
-    }
+/* CARD */
+.card {
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
 
-    /* GRID */
-    .grid {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: 1fr;
-    }
+.grid {
+  display:grid;
+  gap:20px;
+}
 
-    @media (min-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+@media(min-width:768px){
+  .grid { grid-template-columns:1fr 1fr; }
+}
 
-    /* FEATURE CARDS */
-    .feature-card {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid #eee;
-      transition: 0.3s;
-    }
+/* IMAGE */
+img {
+  width:100%;
+  border-radius:10px;
+}
 
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
+/* SPEC TABLE */
+.specs {
+  margin-top:20px;
+  border-top:1px solid #eee;
+}
 
-    .icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(2,132,199,0.1);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      font-size: 20px;
-    }
+.spec-row {
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
 
-    /* EQUIPMENT */
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      transition: 0.3s;
-    }
+/* CTA */
+.cta {
+  text-align:center;
+  padding:50px 20px;
+  background:linear-gradient(to right,var(--primary),var(--secondary));
+  color:white;
+  border-radius:12px;
+}
 
-    .card:hover {
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
+/* FORM */
+form input, form textarea, form select {
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
 
-    img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    /* ABOUT */
-    .about-box {
-      background: white;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    }
-
-    /* CONTACT */
-    form input,
-    form textarea,
-    form select {
-      width: 100%;
-      padding: 14px;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-
-    form button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 15px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
-      margin-top: 50px;
-      border-radius: 12px;
-    }
-  </style>
+form button {
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:8px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
-    <strong>NOLAD BUSINESS PLC</strong>
+  <div class="nav">
+    <div class="logo">NOLAD BUSINESS PLC</div>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
     <nav id="menu">
       <a href="#equipment">Equipment</a>
       <a href="#about">About</a>
@@ -272,38 +229,10 @@
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Premium Heavy Equipment Rental</h1>
-  <p>Reliable machinery for construction, mining, and industrial projects</p>
+  <h1>High-Performance Heavy Equipment for Demanding Projects</h1>
+  <p>Reliable excavators built for mining, construction, and industrial operations</p>
   <a href="#equipment" class="btn primary">View Equipment</a>
-  <a href="#contact" class="btn outline">Contact Us</a>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="container">
-  <div class="section-header">
-    <h2>Why Choose Us</h2>
-    <p>Industry-leading equipment and service</p>
-  </div>
-
-  <div class="grid">
-    <div class="feature-card">
-      <div class="icon">⚙️</div>
-      <h3>Quality Equipment</h3>
-      <p>Brand new machines from trusted manufacturers</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">🛡️</div>
-      <h3>Reliable Service</h3>
-      <p>Full maintenance and technical support</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">🏆</div>
-      <h3>Expert Team</h3>
-      <p>Professional guidance for every project</p>
-    </div>
-  </div>
+  <a href="#contact" class="btn outline">Request Quote</a>
 </section>
 
 <!-- EQUIPMENT -->
@@ -312,11 +241,28 @@
     <h2>Our Equipment</h2>
   </div>
 
-  <div class="grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/500x300">
-      <h3>KOBELCO SK380XDLC-10</h3>
-      <p>38–39 Tons • 252 HP • 1.6–1.9 m³</p>
+  <div class="card">
+    <div class="grid">
+      <img src="https://via.placeholder.com/600x400">
+
+      <div>
+        <h3>KOBELCO SK380XDLC-10</h3>
+        <p><strong>Category:</strong> Excavator</p>
+        <p><strong>Units:</strong> 6</p>
+        <p><strong>Year:</strong> 2026</p>
+
+        <div class="specs">
+          <div class="spec-row"><span>Operating Weight</span><span>38–39 Tons</span></div>
+          <div class="spec-row"><span>Engine</span><span>HINO J08E (188 kW / ~252 HP)</span></div>
+          <div class="spec-row"><span>Bucket Capacity</span><span>1.6 – 1.9 m³</span></div>
+          <div class="spec-row"><span>Max Digging Depth</span><span>~6.8 m</span></div>
+          <div class="spec-row"><span>Max Reach</span><span>~10.6 m</span></div>
+          <div class="spec-row"><span>Bucket Force</span><span>up to 252 kN</span></div>
+          <div class="spec-row"><span>Drawbar Pull</span><span>331 kN</span></div>
+        </div>
+
+        <a href="#contact" class="btn primary">Request Quote</a>
+      </div>
     </div>
   </div>
 </section>
@@ -327,11 +273,11 @@
     <h2>About Us</h2>
   </div>
 
-  <div class="about-box">
+  <div class="card">
     <p>
-      Nolad Business PLC provides high-performance heavy equipment solutions 
-      for construction, mining, and industrial projects. Our mission is to 
-      deliver reliable machinery with exceptional service.
+      Nolad Business PLC delivers high-performance heavy equipment solutions
+      tailored for construction, mining, and industrial projects. We focus on
+      reliability, efficiency, and long-term partnerships.
     </p>
   </div>
 </section>
@@ -342,29 +288,17 @@
     <h2>Contact Us</h2>
   </div>
 
-  <form class="about-box">
+  <form class="card">
     <input placeholder="Name">
     <input placeholder="Email">
     <input placeholder="Phone">
-    <select>
-      <option>Select Equipment</option>
-      <option>KOBELCO SK380XDLC-10</option>
-    </select>
-    <textarea placeholder="Message"></textarea>
+    <textarea placeholder="Project details"></textarea>
     <button>Send Message</button>
   </form>
 </section>
 
-<!-- CTA -->
-<section class="container">
-  <div class="cta">
-    <h2>Ready to Get Started?</h2>
-    <p>Contact us today for your equipment needs</p>
-  </div>
-</section>
-
 <script>
-function toggleMenu() {
+function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 </script>
