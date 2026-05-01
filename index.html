@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Nolad Business PLC</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -24,9 +24,10 @@
 body {
   background:var(--bg);
   color:#0f172a;
+  line-height:1.6;
 }
 
-/* NAV */
+/* NAVBAR */
 header {
   background:white;
   border-bottom:1px solid #eee;
@@ -42,6 +43,11 @@ header {
   display:flex;
   justify-content:space-between;
   align-items:center;
+}
+
+.logo {
+  font-weight:800;
+  letter-spacing:-0.5px;
 }
 
 nav {
@@ -61,7 +67,7 @@ nav a:hover {
 
 .menu-btn {
   display:none;
-  font-size:24px;
+  font-size:26px;
   cursor:pointer;
 }
 
@@ -88,28 +94,57 @@ nav a:hover {
 
 /* HERO */
 .hero {
+  position:relative;
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:90px 20px;
-  color:white;
+
   background:
-    linear-gradient(rgba(2,132,199,0.85), rgba(6,182,212,0.85)),
-    url('https://images.unsplash.com/photo-1581091215367-59ab6b60b0f5?q=80&w=1400');
+    linear-gradient(rgba(15,23,42,0.75), rgba(2,132,199,0.55)),
+    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600');
+
   background-size:cover;
   background-position:center;
+  color:white;
+  padding:40px 20px;
+}
+
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center, rgba(6,182,212,0.25), transparent 60%);
+}
+
+.hero-content {
+  position:relative;
+  max-width:800px;
+  z-index:2;
 }
 
 .hero h1 {
-  font-size:32px;
-  font-weight:700;
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:-0.5px;
 }
 
 .hero p {
-  margin:15px 0;
-  color:#e0f2fe;
+  margin:15px 0 25px;
+  color:#cbd5e1;
 }
 
 @media(min-width:768px){
-  .hero h1 { font-size:52px; }
+  .hero h1 { font-size:56px; }
+  .hero p { font-size:18px; }
+}
+
+.hero-buttons {
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
 .btn {
@@ -118,7 +153,6 @@ nav a:hover {
   border-radius:8px;
   text-decoration:none;
   font-weight:600;
-  margin:5px;
 }
 
 .primary {
@@ -135,7 +169,7 @@ nav a:hover {
 .container {
   max-width:1100px;
   margin:auto;
-  padding:40px 20px;
+  padding:50px 20px;
 }
 
 .section-header {
@@ -144,8 +178,8 @@ nav a:hover {
 }
 
 h2 {
-  font-size:28px;
-  margin-bottom:5px;
+  font-size:30px;
+  font-weight:800;
 }
 
 /* GRID */
@@ -213,8 +247,7 @@ img {
 
 /* FORM */
 form input,
-form textarea,
-form select {
+form textarea {
   width:100%;
   padding:14px;
   margin-top:10px;
@@ -231,6 +264,7 @@ form button {
   color:white;
   border:none;
   border-radius:8px;
+  font-weight:600;
 }
 </style>
 </head>
@@ -239,11 +273,11 @@ form button {
 
 <header>
   <div class="nav">
-    <strong>NOLAD BUSINESS PLC</strong>
+    <div class="logo">NOLAD BUSINESS PLC</div>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
     <nav id="menu">
-      <a href="#equipment">Equipment</a>
       <a href="#why">Why Us</a>
+      <a href="#equipment">Equipment</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -251,10 +285,15 @@ form button {
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Heavy Equipment Built for Performance</h1>
-  <p>Reliable machinery for mining, construction & industrial work</p>
-  <a href="#equipment" class="btn primary">View Equipment</a>
-  <a href="#contact" class="btn outline">Request Quote</a>
+  <div class="hero-content">
+    <h1>Heavy Equipment Built for Real-World Performance</h1>
+    <p>Reliable machinery for mining, construction, and industrial operations</p>
+
+    <div class="hero-buttons">
+      <a href="#equipment" class="btn primary">View Equipment</a>
+      <a href="#contact" class="btn outline">Request Quote</a>
+    </div>
+  </div>
 </section>
 
 <!-- WHY CHOOSE US -->
@@ -292,14 +331,11 @@ form button {
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/600x400">
+    <img src="https://via.placeholder.com/800x450">
 
     <h3>KOBELCO SK380XDLC-10</h3>
-    <p><strong>Category:</strong> Excavator</p>
-    <p><strong>Units:</strong> 6</p>
-    <p><strong>Year:</strong> 2026</p>
-
-    <a href="#contact" class="btn primary">Request Quote</a>
+    <p>Category: Excavator</p>
+    <p>Units: 6 | Year: 2026</p>
   </div>
 </section>
 
@@ -310,9 +346,9 @@ form button {
   </div>
 
   <div class="grid">
-    <div class="card">📞 Phone: +1 (555) 123-4567</div>
-    <div class="card">📧 Email: info@noladbusiness.com</div>
-    <div class="card">📍 Location: Your City, Country</div>
+    <div class="card">📞 +1 (555) 123-4567</div>
+    <div class="card">📧 info@noladbusiness.com</div>
+    <div class="card">📍 Virginia, USA</div>
   </div>
 
   <form class="card">
@@ -322,6 +358,14 @@ form button {
     <textarea placeholder="Message"></textarea>
     <button type="submit">Send Message</button>
   </form>
+</section>
+
+<!-- CTA -->
+<section class="container">
+  <div class="cta">
+    <h2>Ready to Start Your Project?</h2>
+    <p>Get in touch today for equipment rental</p>
+  </div>
 </section>
 
 <script>
