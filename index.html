@@ -37,23 +37,23 @@ header {
 }
 
 .nav {
-  max-width:1100px;
-  margin:auto;
+  width:100%;
+  margin:0;
   padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
+/* ✅ LOGO FIXED (far left + bigger) */
 .logo {
   display:flex;
   align-items:center;
   gap:10px;
-  font-weight:800;
 }
 
 .logo img {
-  height:40px;
+  height:55px; /* 🔥 bigger logo (standard website size) */
 }
 
 nav {
@@ -117,13 +117,33 @@ nav a:hover {
   padding:40px 20px;
 }
 
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center, rgba(6,182,212,0.25), transparent 60%);
+}
+
 .hero-content {
   position:relative;
   max-width:800px;
+  z-index:2;
 }
 
-.hero h1 { font-size:40px; font-weight:800; }
-.hero p { margin:15px 0 25px; color:#cbd5e1; }
+.hero h1 {
+  font-size:34px;
+  font-weight:800;
+}
+
+.hero p {
+  margin:15px 0 25px;
+  color:#cbd5e1;
+}
+
+@media(min-width:768px){
+  .hero h1 { font-size:56px; }
+  .hero p { font-size:18px; }
+}
 
 .hero-buttons {
   display:flex;
@@ -133,14 +153,22 @@ nav a:hover {
 }
 
 .btn {
+  display:inline-block;
   padding:14px 22px;
   border-radius:8px;
   text-decoration:none;
   font-weight:600;
 }
 
-.primary { background:white; color:var(--primary); }
-.outline { border:2px solid white; color:white; }
+.primary {
+  background:white;
+  color:var(--primary);
+}
+
+.outline {
+  border:2px solid white;
+  color:white;
+}
 
 /* SECTIONS */
 .container {
@@ -154,50 +182,74 @@ nav a:hover {
   margin-bottom:30px;
 }
 
-h2 { font-size:30px; font-weight:800; }
+h2 {
+  font-size:30px;
+  font-weight:800;
+}
 
-/* CARD */
-.card {
+/* GRID */
+.grid {
+  display:grid;
+  gap:20px;
+  grid-template-columns:1fr;
+}
+
+@media(min-width:768px){
+  .grid {
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* CARDS */
+.feature-card, .card {
   background:white;
-  padding:25px;
+  padding:20px;
   border-radius:12px;
   border:1px solid #eee;
-  box-shadow:0 5px 20px rgba(0,0,0,0.05);
 }
 
-/* CAROUSEL */
-.carousel {
-  position:relative;
-  text-align:center;
-}
-
-.carousel img {
-  width:80%;
-  max-width:500px;
-  height:280px;
-  object-fit:cover;
-  border-radius:12px;
+.feature-card:hover {
+  transform:translateY(-5px);
   transition:0.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* buttons */
-.arrow {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:#0284c7;
+/* ICON */
+.icon {
+  width:50px;
+  height:50px;
+  background:rgba(2,132,199,0.1);
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  margin-bottom:15px;
+  font-size:20px;
+}
+
+/* ✅ EQUIPMENT IMAGE SMALLER */
+img {
+  width:80%;          /* 🔥 smaller */
+  max-width:500px;    /* keeps clean size */
+  display:block;
+  margin:0 auto;      /* center image */
+  border-radius:10px;
+}
+
+/* CTA */
+.cta {
+  text-align:center;
+  padding:50px 20px;
+  background:linear-gradient(to right,var(--primary),var(--secondary));
   color:white;
-  border:none;
-  padding:10px 15px;
-  cursor:pointer;
-  border-radius:8px;
+  border-radius:12px;
+  margin-top:40px;
 }
-
-.left { left:10px; }
-.right { right:10px; }
 
 /* FORM */
-form input, form textarea {
+form input,
+form textarea {
   width:100%;
   padding:14px;
   margin-top:10px;
@@ -223,10 +275,9 @@ form button {
 <header>
   <div class="nav">
 
-    <!-- 🔥 LOGO (kept) -->
+    <!-- ✅ LOGO (far left + bigger) -->
     <div class="logo">
-      <img src="logo.png" alt="Logo">
-      <span>NOLAD BUSINESS PLC</span>
+      <img src="logo.png" alt="Nolad Logo">
     </div>
 
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -259,10 +310,24 @@ form button {
     <h2>Why Choose Us</h2>
   </div>
 
-  <div class="card">
-    <p>✔ Quality Equipment</p>
-    <p>✔ Reliable Service</p>
-    <p>✔ Expert Support Team</p>
+  <div class="grid">
+    <div class="feature-card">
+      <div class="icon">⚙️</div>
+      <h3>Quality Equipment</h3>
+      <p>Brand new machines from trusted manufacturers</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🛡️</div>
+      <h3>Reliable Service</h3>
+      <p>Full maintenance and technical support</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🏆</div>
+      <h3>Expert Team</h3>
+      <p>Professional guidance for every project</p>
+    </div>
   </div>
 </section>
 
@@ -271,26 +336,24 @@ form button {
 
   <div class="section-header">
     <h2>Our Equipment</h2>
-    <p>KOBELCO SK380XDLC-10 Fleet</p>
+    <p>KOBELCO SK380XDLC-10 – Heavy Duty Excavator Fleet</p>
   </div>
 
   <div class="card">
 
-    <!-- 🔥 SMALL PROFESSIONAL CAROUSEL -->
-    <div class="carousel">
+    <img src="image1.JPG" alt="Equipment Image">
 
-      <button class="arrow left" onclick="prevImg()">‹</button>
+    <h3 style="font-size:22px; font-weight:700; margin-top:15px;">
+      KOBELCO SK380XDLC-10
+    </h3>
 
-      <img id="equipImg" src="image1.JPG" alt="Equipment">
+    <p style="color:#666;">Excavator • 6 Units • 2026 Model • Japan Origin</p>
 
-      <button class="arrow right" onclick="nextImg()">›</button>
+    <p style="margin:10px 0 15px;">
+      Heavy-duty mining and construction excavator built for maximum productivity and durability.
+    </p>
 
-    </div>
-
-    <h3 style="margin-top:20px;">KOBELCO SK380XDLC-10</h3>
-    <p style="color:#666;">6 Units • Mining & Construction Excavator</p>
-
-    <select style="width:100%; padding:12px; margin-top:10px; border-radius:8px;">
+    <select style="width:100%; padding:12px; border-radius:8px;">
       <option>Unit 1</option>
       <option>Unit 2</option>
       <option>Unit 3</option>
@@ -298,6 +361,11 @@ form button {
       <option>Unit 5</option>
       <option>Unit 6</option>
     </select>
+
+    <button onclick="requestQuote()"
+      style="margin-top:20px; width:100%; background:#0284c7; color:white; padding:14px; border:none; border-radius:8px; font-weight:600; cursor:pointer;">
+      Get Quote
+    </button>
 
   </div>
 </section>
@@ -309,13 +377,27 @@ form button {
     <h2>Contact Us</h2>
   </div>
 
+  <div class="grid">
+    <div class="card">📞 +1 (555) 123-4567</div>
+    <div class="card">📧 info@noladbusiness.com</div>
+    <div class="card">📍 Virginia, USA</div>
+  </div>
+
   <form class="card">
     <input placeholder="Name">
     <input placeholder="Email">
-    <textarea placeholder="Message"></textarea>
-    <button>Send Message</button>
+    <input placeholder="Phone">
+    <textarea id="message" placeholder="Message"></textarea>
+    <button type="submit">Send Message</button>
   </form>
 
+</section>
+
+<!-- CTA -->
+<section class="container">
+  <div class="cta">
+    <h2>Ready to Start Your Project?</h2>
+  </div>
 </section>
 
 <script>
@@ -323,31 +405,12 @@ function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
-/* 🔥 SIMPLE IMAGE CAROUSEL */
-const images = [
-  "image1.JPG",
-  "image1.JPG",
-  "image1.JPG",
-  "image1.JPG",
-  "image1.JPG",
-  "image1.JPG"
-];
-
-let index = 0;
-const img = document.getElementById("equipImg");
-
-function showImg(){
-  img.src = images[index];
-}
-
-function nextImg(){
-  index = (index + 1) % images.length;
-  showImg();
-}
-
-function prevImg(){
-  index = (index - 1 + images.length) % images.length;
-  showImg();
+function requestQuote(){
+  const msg = document.getElementById("message");
+  if(msg){
+    msg.value = "Requesting quote for selected equipment...";
+  }
+  document.getElementById("contact").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
