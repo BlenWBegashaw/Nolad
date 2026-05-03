@@ -404,6 +404,7 @@ form button {
 
 </section>
 <!-- ================= CONTACT ================= -->
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="container">
   <div class="section-header">
     <h2>Contact Us</h2>
@@ -415,11 +416,25 @@ form button {
     <div class="card">📍 Kirkos Subcity,Woreda 09,Addis Ababa,Ethiopia</div>
   </div>
 
-  <form class="card">
-    <input placeholder="Name">
-    <input placeholder="Email">
-    <input placeholder="Phone">
-    <textarea id="message" placeholder="Message"></textarea>
+  <!-- 🔥 FORMSPREE CONNECTED -->
+  <form 
+    class="card"
+    action="https://formspree.io/f/yourformid"
+    method="POST"
+  >
+    <input name="name" placeholder="Name" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="phone" placeholder="Phone">
+    
+    <textarea 
+      id="message" 
+      name="message" 
+      placeholder="Message" 
+      required
+    ></textarea>
+
+    <!-- optional subject -->
+    <input type="hidden" name="_subject" value="New Nolad Website Message">
 
     <button type="submit">Send Message</button>
   </form>
@@ -471,6 +486,27 @@ Please contact me with details.`;
   });
 }
 </script>
+<script>
+const form = document.querySelector("form");
 
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    alert("✅ Message sent successfully!");
+    form.reset();
+  } else {
+    alert("❌ Something went wrong. Try again.");
+  }
+});
+</script>
 </body>
 </html>
